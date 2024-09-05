@@ -4,8 +4,8 @@
 # вас 3 минуты.
 
 my_list = [2, 4, 6, 2, 8, 10, 12, 14, 16, 18]
-print(my_list[2:6:2]) # [6, 8, 10, 12]
-print(my_list.pop()) # 10
-print(my_list.extend([314, 42])) # [2, 4, 6, 2, 8, 42, 314, 16, 18]
-print(my_list.sort(reverse=False)) # [18, 16, 14, 12, 10, 8, 6, 4, 2]
-print(my_list) # [2, 4, 6, 2, 8, 10, 12, 14, 16, 18]
+print(my_list[2:6:2]) # [6, 8]
+print(my_list.pop()) # 18
+print(my_list.extend([314, 42])) # None
+print(my_list.sort(reverse=False)) # None
+print(my_list) # [2, 2, 4, 6, 8, 10, 12, 14, 16, 42, 314]
