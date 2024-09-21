@@ -8,4 +8,3 @@ with open('text_data.txt', 'r', encoding='utf-8') as f:
         print(line[:-1])
         print(line.replace('\n', ''))
 
-    # gb.ru / lessons / 443908  # s2075

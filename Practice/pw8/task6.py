@@ -5,20 +5,17 @@
 # Функция должна извлекать ключи словаря для заголовков
 # столбца из переданного файла.
 
-import pandas as pd
 import pickle
+import csv
+from pathlib import Path
 
-def convert_pickle_to_csv(pickle_file):
-    with open(pickle_file, 'rb') as file:  # Открываем файл для чтения
-        data = pickle.load(file)  # Загружаем данные из файла
+def csv_to_str_pickle(file_csv: Path):
+    with open(file_csv, 'r', encoding='utf-8', newline='') as f_r:
+        csv_file = csv.reader(f_r, dialect='excel-tab')
+        header = next(csv_file)
+        data = [{k: v for k, v in zip(header, row)} for row in csv_file]
+        return pickle.dumps(data)
 
-    df = pd.DataFrame(data)  # Создаем DataFrame из данных
-
-    # Извлекаем ключи словаря для заголовков столбца
-    headers = list(df[0].keys())  # Получаем ключи первого элемента списка словарей
-
-    # Сохраняем DataFrame в CSV-файл
-    df.to_csv('output.csv', index=False, header=headers)  # Записываем данные в файл output.csv
-
-# Пример использования функции
-convert_pickle_to_csv('путь/к/pickle-файлу')
+if __name__ == '__main__':
+    result = csv_to_str_pickle(Path('u_users.csv'))
+    print(result)

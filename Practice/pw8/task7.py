@@ -1,9 +1,17 @@
-import pandas as pd
+# Задание №7 Прочитайте созданный в прошлом задании csv файл без использования csv.DictReader.
+# Распечатайте его как pickle строку.
 
-def read_csv_as_pickle(file_path):
-    df = pd.read_csv(file_path)  # Считываем данные из файла
-    data = df.to_dict(orient='records')  # Преобразуем DataFrame в список словарей
-    return pickle.dumps(data)  # Возвращаем данные в виде pickle-строки
+import pickle
+import csv
+from pathlib import Path
 
-# Пример использования функции
-print(read_csv_as_pickle('путь/к/CSV-файлу'))
+def csv_to_str_pickle(file_csv: Path):
+    with open(file_csv, 'r', encoding='utf-8', newline='') as f_r:
+        csv_file = csv.reader(f_r, dialect='excel-tab')
+        header = next(csv_file)
+        data = [{k: v for k, v in zip(header, row)} for row in csv_file]
+        return pickle.dumps(data)
+
+if __name__ == '__main__':
+    result = csv_to_str_pickle(Path('u_users.csv'))
+    print(result)
