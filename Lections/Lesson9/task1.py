@@ -16,4 +16,4 @@ print(big(7))
 print(small(3))
 
 
-# gb.ru/lessons/443910#s977
+#
