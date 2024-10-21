@@ -1,0 +1,2 @@
+Аргументы: {'args': (1, 2), 'kwargs': {'keyword': 'test'}}, Результат: Результат функции: 1 2
+2024-10-10 20:43:38: INFO: print(*(<function my_function at 0x000001399AE1DD00>,), **{}) -> None
